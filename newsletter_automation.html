@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Portafolio V1
+	01/08/2024
+-->
+<html>
+	<head>
+		<title>Analysis Newsletter Automation</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">Projects</a></li>
+							<li><a href="about.html">About me</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/arturocv/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/arturocavi" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Analysis Newsletter Automation</h1>
+									<p>Automation of analysis newsletters in full requiring only to execute a code in R and adding a macro</p>
+								</header>
+								<h2>Overview</h2>
+								<p>In order to automate the elaboration of a analysis newsletters that are published periodically to save time and avoid typographical errors, 
+									solutions were developed so that the entire fact sheet could be prepared without the need to write or make graphs, requiring only running a 
+									code in R, adding a macro to the Excel file generated and executing it. This generates a Word document with the analysis and graphs generated 
+									according to the latest information published by INEGI for different surveys. 
+									<br>
+									The newsletters were written in Spanish for the Instituto de Información Estadística y Geográfica de Jalisco (IIEG).
+								</p>
+
+								<br>
+								<br>
+								<h3>Technologies Used</h3>
+								<p>
+									<ul>
+										<li>R</li>
+										<li>VBA</li>
+									</ul>
+								</p>
+								
+								<br>
+								<br>
+								<h3>Video: How it works</h3>
+								<div style="position: relative; padding-bottom: 56.25%; height: 0;">
+									<iframe src="https://www.loom.com/embed/51cc753a0b874643a2696ab62ccde71e?sid=edcf9aad-4752-447b-956b-251fbebd2655" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+								</div>
+
+								<br>
+								<br>
+								<h3>Repositories</h3>
+								<p>
+									<h4>Monthly Indicator of Industrial Activity by State (IMAIEF):</h4>
+									<a href="https://github.com/arturocavi/imaief_newsletter_automation" target="_blank">github.com/arturocavi/imaief_newsletter_automation</a>
+									<br>
+									<br>
+
+									<h4>Monthly Manufacturing Industry Survey (EMIM):</h4>
+									<a href="https://github.com/arturocavi/emim_newsletter_automation" target="_blank">github.com/arturocavi/emim_newsletter_automation</a>
+									<br>
+									<br>
+
+									<h4>National Survey of Construction Companies (ENEC):</h4>
+									<a href="https://github.com/arturocavi/enec_newsletter_automation" target="_blank">github.com/arturocavi/enec_newsletter_automation</a>
+									<br>
+									<br>
+
+									<h4>Manufacturing, Assembly and Export Services Industry Program (IMMEX):</h4>
+									<a href="https://github.com/arturocavi/immex_newsletter_automation" target="_blank">github.com/arturocavi/immex_newsletter_automation</a>
+								</p>
+
+								<br>
+								<br>
+								<h3>How to use the Files</h3>
+								<p>
+									<ol>
+										<li>Download the necessary R packages.</li>
+										<li>Change the directory in R archive to one fo your choice.</li>
+										<li>Run the entire R code (Ctrl A + Ctrl Enter).</li>
+										<li>Open the Excel file created by the code in the previously specified directory.</li>
+										<li>In the Excel file Go to Programmer > Code > Visual Basic.</li>
+										<li>In the VBAProject area right click and select "Import file" and select the Macro (.bas file).</li>
+										<li>Change the directory in the .bas file where the created document will be saved and the locations where the Charts and Word templates will be taken from.</li>
+										<li>Run the macro with Ctrl + A and it will automatically make the graphs, which will be taken to a Word document where it will write all the analysis, titles, sources and notes in the appropriate format.</li>
+									</ol>
+								</p>
+							</section>
+
+					</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>Arturo Carrillo Villarreal</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

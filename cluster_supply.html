@@ -1,0 +1,920 @@
+<!DOCTYPE HTML>
+<!--
+	Portafolio V1
+	01/08/2024
+-->
+<html>
+	<head>
+		<title>Cluster Supply Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">Projects</a></li>
+							<li><a href="about.html">About me</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/arturocv/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/arturocavi" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Cluster Supply Analysis</h1>
+									<p>Dashboards and and studies for the Automotive, Electronics, Foundry and Tooling clusters of Jalisco, Mexico</p>
+								</header>
+
+								<h2>Overview</h2>
+								<p>
+									In order to comprehend the evolution of certain industrial clusters in Jalisco, Mexico regarding certain economic indicators 
+									and to identify their position at national level, I created some interactive dashboards and an individual study for each cluster.
+								</p>
+								<p>
+									<ul><b>Clusters:</b>
+										<li>Automotive</li>
+										<li>Electronics</li>
+										<li>Foundry</li>
+										<li>Tooling</li>
+									</ul>
+
+									<ul><b>Economic indicators:</b>
+										<li>Gross production</li>
+										<li>Employed personnel</li>
+										<li>Fixed assets</li>
+										<li>Economic units (establishments)</li>
+									</ul>
+								</p>
+
+								<br>
+								<br>
+								<h2>Technologies Used</h2>
+								<ul>
+									<li>SQL</li>
+									<li>Python</li>
+									<li>Tableau</li>
+									<li>QGIS</li>
+								</ul>
+
+								<br>
+								<br>
+								<h2>Dashboards</h2>
+								<p>
+									The dashboards were developed in Spanish for the Institute of Statistical and Geographic Information of Jalisco (IIEG). 
+									Maps were prepared with QGIS.
+								</p>
+								<p>
+									The following dashboard allows us to compare the states in each of the clusters analyzed according to each indicator. You can see 
+									the evolution over the years to see how Jalisco's position is changing. You can also filter by economic activity for customized queries. 
+									The "Comparar Entidades" button allows you to customize a table with the values of these indicators to compare States of interest and 
+									you can also customize a graph to see the progress of these indicators for States of interest.
+
+								</p>
+								<div class='tableauPlaceholder' id='viz1722970963218' style='position: relative'>
+									<noscript>
+										<a href='#'><img alt='Automotriz ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;ProveeduradeClusters1&#47;Automotriz&#47;1_rss.png' style='border: none' /></a>
+									</noscript>
+									<object class='tableauViz'  style='display:none;'>
+										<param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+										<param name='embed_code_version' value='3' /> 
+										<param name='site_root' value='' />
+										<param name='name' value='ProveeduradeClusters1&#47;Automotriz' />
+										<param name='tabs' value='no' /><param name='toolbar' value='yes' />
+										<param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;ProveeduradeClusters1&#47;Automotriz&#47;1.png' /> 
+										<param name='animate_transition' value='yes' />
+										<param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' />
+										<param name='language' value='es-ES' /></object>
+								</div>                
+								<script type='text/javascript'>
+									var divElement = document.getElementById('viz1722970963218');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='1227px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+								</script>
+								<sub>
+									Source: IIEG with information from INEGI. Censos Económicos 2004-2019.
+								</sub>
+								<br>
+								<br>
+								<p>
+									The following dashboard has two different visualizations. The first one, "Mapa de calor de unidades económicas", allows visualizing the concentration of economic 
+									units in the State of Jalisco in a heat map that takes into account both the number of establishments and the size (employed personnel).
+								</p>
+								<p>
+									The second visualization "Ubicación y directorio de proveedores y clientes" allows identifying the establishments of interest, whether they are suppliers, customers 
+									or competitors, on a map where each selected activity takes a different color and at the bottom a directory is displayed with information on 
+									the economic units of interest, with data on Company Name, Size, Telephone, Mail, Website and Address. Clicking on the establishment or 
+									selecting a set of establishments (with Ctrl + click or the Lasso tool) filters the information of the selected units, while clicking on the 
+									activity highlights the units of the selected activity.
+								</p>
+								<p>
+									Both visualizations allow filtering by Cluster, Jalisco Region and Municipality for customized queries.
+								</p>
+								<div class='tableauPlaceholder' id='viz1722972853502' style='position: relative'>
+									<noscript>
+										<a href='#'><img alt='Mapa de calor ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;ProveeduradeClusters2&#47;Mapadecalor&#47;1_rss.png' style='border: none' /></a>
+									</noscript>
+									<object class='tableauViz'  style='display:none;'>
+										<param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+										<param name='embed_code_version' value='3' /> <param name='site_root' value='' />
+										<param name='name' value='ProveeduradeClusters2&#47;Mapadecalor' />
+										<param name='tabs' value='no' /><param name='toolbar' value='yes' />
+										<param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pr&#47;ProveeduradeClusters2&#47;Mapadecalor&#47;1.png' /> 
+										<param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' />
+										<param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='es-ES' />
+									</object>
+								</div>                
+								<script type='text/javascript'>
+									var divElement = document.getElementById('viz1722972853502');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='827px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+								</script>
+								<sub>
+									Source: IIEG with information from INEGI. DENUE 2024.
+								</sub>
+
+								<br>
+								<br>
+								<br>
+								<h2>Studies</h2>
+								<p>
+									The information in the graphs and tables of the studies was obtained through SQL queries. 
+									The studies were written in Spanish for the Institute of Statistical and Geographic Information of Jalisco (IIEG).
+								</p>
+								<p>
+									The studies can be consulted in the following IIEG links:
+									<ul>
+										<li><a href="https://iieg.gob.mx/ns/wp-content/uploads/2024/06/Proveeduria-Cluster-Automotriz.pdf" target="_blank">Automotive Cluster Study</a></li>
+										<li><a href="https://iieg.gob.mx/ns/wp-content/uploads/2024/06/Proveeduria-Cluster-de-Electronica.pdf" target="_blank">Electronics Cluster Study</a></li>
+										<li><a href="https://iieg.gob.mx/ns/wp-content/uploads/2024/06/Proveeduria-Cluster-de-Fundicion.pdf" target="_blank">Foundry Cluster Study</a></li>
+										<li><a href="https://iieg.gob.mx/ns/wp-content/uploads/2024/06/Proveeduria-Tooling-Cluster.pdf" target="_blank">Tooling Cluster Study</a></li>
+									</ul>
+								</p>
+
+								<br>
+								<br>
+								<h2>Process</h2>
+
+								<br>
+								<h3>Data Preparation</h3>
+								<p>
+									To obtain the information of the last 4 Economic Censuses (2004-2019) for all the Mexican states, we had to extract the information for each 
+									state (32) and the national information through a loop where a csv file was extracted from a compressed ZIP file and then transform the data 
+									and join 132 tables.
+								</p>
+								<p>
+									The following python code block shows how the data extraction and transformation process was done using pandas, glob and zipfile libraries:
+								</p>
+								<pre><code class="python">
+# Zip Files that contains the CSV files to concatenate
+zip_files = glob.glob('Datos Abiertos CE/*.zip')
+
+# EF Abbreviation
+abr = list(map(lambda x:x.split('_')[2].upper(), zip_files))
+
+# Year
+anio = list(map(lambda x:x.split('_')[1][2:],zip_files))
+
+# Read Excel file for "Actividades" table to filter activities in clusters
+actividades = pd.read_excel('clusters_actividades.xlsx', sheet_name='actividades')
+
+# Concatenate CSV files into a DataFrame
+cifras = pd.DataFrame()
+i=0
+
+for file in zip_files:
+	# Extract file of interest
+	zf  = zipfile.ZipFile(file, mode = 'r')
+	folder = [name for name in zf.namelist() if name.startswith('conjunto_de_datos/ce')][0]
+	zf.extract(folder)
+
+	# Read CSV file
+	csv_path = glob.glob('conjunto_de_datos/*.csv')[0]
+	ef = pd.read_csv(csv_path,index_col=False)
+
+	# Delete extracted file and folder no longer needed
+	os.remove(os.path.join(dir, csv_path))
+	os.rmdir(os.path.join(dir, 'conjunto_de_datos'))
+
+	# Select columns to filter
+	ef = ef['ENTIDAD MUNICIPIO CODIGO ID_ESTRATO UE A111A H001A Q000A'.split()]
+
+	# Filter rows
+	# (Total por Clase de Actividad a nivel EF y Total EF)
+	ef = ef[
+		((ef['MUNICIPIO'] == '\t') & (ef['CODIGO'].isna()) & (ef['ID_ESTRATO'].isna()))
+		|
+		((ef['MUNICIPIO'] == '\t') & (ef['CODIGO'].str.len() == 6) & (ef['ID_ESTRATO'].isna()))
+		|
+		((ef['MUNICIPIO'] == ' ') & (ef['CODIGO'] == ' ') & (ef['ID_ESTRATO'].isna()))
+		|
+		((ef['MUNICIPIO'] == ' ') & (ef['CODIGO'].str.len() == 6) & (ef['ID_ESTRATO'].isna()))
+		]
+
+	# Delete columns no longer needed
+	ef = ef.drop(columns = ['MUNICIPIO','ID_ESTRATO'])
+
+	# Change CODIGO of totals from ' ' to '999999' and change type to integer
+	try:
+		ef['CODIGO'] = ef['CODIGO'].str.replace(' ','999999').astype(int)
+	except ValueError:
+		ef['CODIGO'] = ef['CODIGO'].fillna(999999).astype(int)
+
+	# Set Nacional ENTIDAD id to 33
+	if abr[i] == 'NAC':
+		ef['ENTIDAD'] = 33
+
+	# Add short EF column
+	ef['ENT'] = abr[i]
+
+	#Add year column
+	ef['ANIO'] = anio[i]
+
+	i += 1
+
+	# Filter activities of interest
+	ef = ef[ef.CODIGO.isin(actividades.id_act)]
+
+	# Rearrange Columns
+	ef = ef.reindex(columns='ANIO ENTIDAD ENT CODIGO UE A111A H001A Q000A'.split())
+
+	# Append EF to cifras table
+	cifras = pd.concat([cifras,ef], ignore_index=True)
+								</code></pre>
+								<p>
+									Once the database was transformed into a format suitable for database queries, the information was loaded into a PostgreSQL database with 
+									the help of the sqlalchemy library as shown in the following block:
+								</p>
+								<pre><code class="python">
+# Get ENTIDAD & ENT Values for entidades table
+entidades = cifras[['ENTIDAD','ENT']].drop_duplicates().sort_values(by='ENTIDAD')
+
+# Transform cifras table into "indicadores económicos" table
+ind_eco = cifras.drop(columns='ENT')
+ind_eco.rename(columns= {'ENTIDAD':'id_ent','CODIGO':'id_act','ANIO':'anio','UE':'unidades_eco','A111A':'produccion','H001A':'personal','Q000A':'activos'}, inplace=True)
+
+#Change data types
+ind_eco['anio'] = ind_eco['anio'].astype(int)
+ind_eco['produccion'] = pd.to_numeric(ind_eco['produccion'], errors='coerce')
+ind_eco['personal'] = pd.to_numeric(ind_eco['personal'], errors='coerce')
+ind_eco['activos'] = pd.to_numeric(ind_eco['activos'], errors='coerce')
+
+#Sort by Columns
+ind_eco.sort_values(['anio','id_ent','id_act'], inplace=True)
+
+
+
+# "Entidades Nombres" table
+# Import EF Names table an join to entidades table
+entidad_nombre = pd.read_csv('entidad_nombre.csv', index_col=False,  encoding="cp1252")
+
+# Join entidades & entidad_nombre tables
+ent_nombre = pd.merge(entidades,entidad_nombre, on='ENTIDAD')
+
+# Change column names of "entidades nombres" table
+ent_nombre.rename(columns = {'ENTIDAD':'id_ent', 'ENT':'ent','NOMBRE_OFICIAL':'nom_ofi','NOM_ENT':'nom_ent'}, inplace=True)
+
+
+
+# Read Excel files for "Clusters" and "Clusters-Actividades Relations" Tables
+clusters = pd.read_excel('clusters_actividades.xlsx', sheet_name='clusters')
+clusters_actividades = pd.read_excel('clusters_actividades.xlsx', sheet_name='clusters_actividades')
+
+
+# PostgreSQL Connection
+connection = 'postgresql://postgres:postgresql@localhost/clusters_ce19'
+db = create_engine(connection)
+conn = db.connect()
+
+
+#Load DataFrames to Database
+ind_eco.to_sql('ind_eco', con=conn, if_exists='replace', index=False)
+ent_nombre.to_sql('ent_nombre', con=conn, if_exists='replace', index=False)
+clusters.to_sql('clusters', con=conn, if_exists='replace', index=False)
+actividades.to_sql('actividades', con=conn, if_exists='replace', index=False)
+clusters_actividades.to_sql('clusters_actividades', con=conn, if_exists='replace', index=False)
+								</code></pre>
+								<p>
+									To create the dashboard it was necessary to have a base without the national and state totals, so they were removed in a base that was 
+									called "cifras". This was created with the SQL block shown below.
+								</p>
+								<pre><code class="sql">
+COPY (
+	SELECT *
+	FROM ind_eco
+	WHERE
+		id_ent != 33
+		AND id_act != 999999
+	ORDER BY anio, id_ent, id_act
+)
+TO 'C:\Users\Public\Downloads\cifras.csv'
+WITH DELIMITER ','
+CSV HEADER;
+								</code></pre>
+								<p>
+									Regarding the information of the establishments, obtained from the DENUE for the years 2019 and 2024, the data was transformed as shown in the following Python code block:
+								</p>
+								<pre><code class="python">
+# DENUE Data Transformation for Comparative Tables 2019-2024
+
+import pandas as pd
+
+# Original DENUE data
+denue_o19 = pd.read_csv('denue_14_0419_csv.csv',index_col=False,encoding='latin-1')
+denue_o24 = pd.read_csv('denue_14_csv.csv',index_col=False,encoding='latin-1')
+
+# Cluster activities selection
+actividades = pd.read_csv('actividades_clusters.csv', index_col=False, encoding='latin-1')
+
+# 2019 and 2024 tables with id and activity code data.
+# Filtering cluster activity data
+denue2019 = denue_o19[['id','codigo_act']]
+denue2019['anio'] = 2019
+denue2019 = denue2019[denue2019.codigo_act.isin(actividades.codigo_act)]
+
+denue2024 = denue_o24[['id','codigo_act']]
+denue2024['anio'] = 2024
+denue2024 = denue2024[denue2024.codigo_act.isin(actividades.codigo_act)]
+
+# Append data from DENUE 2019 and 2024
+datos_denue = pd.concat([denue2019,denue2024])
+
+# Rearrange DENUE columns
+datos_denue = datos_denue.reindex(columns='anio id codigo_act'.split())
+
+# Rename activity code
+datos_denue.rename(columns={'id':'id_denue','codigo_act':'id_act'}, inplace=True)
+
+# Export to CSV
+datos_denue.to_csv('datos_denue.csv', index=False, encoding='cp1252')
+								</code></pre>
+								<p>
+									Similar to the Economic Census information, the DENUE data was loaded into PostgreSQL with the help of the sqlalchemy library as shown in the following block:
+								</p>
+								<pre><code class="python">
+# Import libraries
+import pandas as pd
+from sqlalchemy import create_engine
+from sqlalchemy_utils import create_database
+
+# Import CSV & Excel files
+denue = pd.read_csv('datos_denue.csv', index_col=False, encoding='cp1252')
+actividades = pd.read_excel('dim_tab.xlsx', sheet_name='actividades')
+clusters_actividades = pd.read_excel('dim_tab.xlsx', sheet_name='clusters_actividades')
+clusters = pd.read_excel('dim_tab.xlsx', sheet_name='clusters')
+subsector = pd.read_excel('dim_tab.xlsx', sheet_name='subsector')
+clasificacion = pd.read_excel('dim_tab.xlsx', sheet_name='clasificacion')
+
+# PostgreSQL Engine
+engine = 'postgresql://postgres:postgresql@localhost/clusters_denue'
+db = create_engine(engine)
+
+# Create Database
+create_database(db.url)
+
+# Connection
+conn = db.connect()
+
+
+# Load DataFrames to Database
+denue.to_sql('denue', con=conn, if_exists='replace', index=False)
+actividades.to_sql('actividades', con=conn, if_exists='replace', index=False)
+clusters_actividades.to_sql('clusters_actividades', con=conn, if_exists='replace', index=False)
+clusters.to_sql('clusters', con=conn, if_exists='replace', index=False)
+subsector.to_sql('subsector', con=conn, if_exists='replace', index=False)
+clasificacion.to_sql('clasificacion', con=conn, if_exists='replace', index=False)
+								</code></pre>
+								<p>
+									As for the DENUE 2024 information used for the heat map and the directory of the second visualization, this data was obtained using the following python code:
+								</p>
+								<pre><code class="python">
+import pandas as pd
+
+denue = pd.read_csv('denue_inegi_14_.csv',index_col=False, encoding='latin-1')
+
+actividades = pd.read_excel('clusters_actividades.xlsx', sheet_name='actividades')
+
+# Selection of DENUE Variables
+datos = denue['id nom_estab raz_social codigo_act per_ocu telefono correoelec www nom_vial numero_ext cve_mun municipio latitud longitud'.split()]
+
+# Format of Capital Letters
+datos['nom_estab raz_social nom_vial municipio'.split()] = datos['nom_estab raz_social nom_vial municipio'.split()].apply(lambda x: x.str.title())
+datos['correoelec www'.split()] = datos['correoelec www'.split()].apply(lambda x: x.str.lower())
+
+# Filter cluster activities
+datos = datos[datos['codigo_act'].isin(actividades['id_act'])]
+
+# Export to CSV
+datos.to_csv('denue_csv.csv', index=False, encoding="cp1252")
+								</code></pre>
+								<p>
+									In order to group the information according to certain activity classifications to facilitate analysis, two additional classification and 
+									subsector tables had to be created, and a subsector identifier column had to be added to the activity table. <br>
+									The following shows what was done in SQL to accomplish this task:
+								</p>
+								<pre><code class="sql">
+-- Add sub_id column in actividades table 
+ALTER TABLE actividades
+ADD COLUMN id_sub INT;
+
+UPDATE actividades
+SET id_sub = CAST(LEFT(CAST(id_act AS VARCHAR), 3) AS INT);
+
+
+
+
+-- Create classification and subsector tables
+CREATE TABLE clasificacion
+(
+    id_cla INT PRIMARY KEY UNIQUE,
+	cla_nom TEXT
+);
+
+
+CREATE TABLE subsector
+(
+	id_sub INT PRIMARY KEY UNIQUE,
+	subsector TEXT,
+	id_cla INT,
+	FOREIGN KEY (id_cla) REFERENCES clasificacion (id_cla)
+);
+
+
+
+
+-- Copy contents of classification and sub-sector tables
+COPY clasificacion
+FROM 'C:\Users\Public\Downloads\clasificacion.csv'
+WITH (FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'WINDOWS-1252');
+
+COPY subsector
+FROM 'C:\Users\Public\Downloads\subsector.csv'
+WITH (FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'WINDOWS-1252');
+
+
+
+
+-- Add list of tables, activities and sub-sector
+ALTER TABLE actividades
+ADD CONSTRAINT fkas FOREIGN KEY (id_sub) REFERENCES subsector (id_sub);
+								</code></pre>
+
+								<br>
+								<br>
+								<h3>SQL Queries</h3>
+								<p>
+									The studies required SQL queries to obtain the necessary tables for the graphs and comparative tables.
+								</p>
+								<p>
+									<ul>A database was created with 7 tables for the economic census information:
+										<li>Economic Indicators (ind_eco)</li>
+										<li>Economic Activities (actividades)</li>
+										<li>Subsectors (subsector)</li>
+										<li>Classifications (clasificacion)</li>
+										<li>Clusters (clusters)</li>
+										<li>Clusters-Activities Relationships (clusters_actividades)</li>
+										<li>State Names (ent_nombre)</li>
+									</ul>
+								</p>
+								<p>
+									To better understand the relationships of the data base and its contents, the following Entity Relationship Diagram is shown: <br>
+									<div class="image fit">
+										<img src="images/erd_clusters_ce19.png" alt="Censos Económicos ERD" style="padding: 0px 0px 0px 200px"/>
+									</div>
+								</p>
+								<p>
+									Although graphs and tables were made for each indicator for each study, several types of queries are repeated or are very similar in other 
+									cases, so for practical purposes, only one example of the different queries will be shown below. The rest of the queries can be found in the 
+									<a href="https://github.com/arturocavi/cluster_supply">GitHub repository</a>.
+								</p>
+								<p>
+									With this database, we first sought to find the percentage share of the automotive cluster's gross production in the state total by state for 
+									the 2019 census. For this we first had to obtain the total production of each state and the production of the cluster in each state and then 
+									divide this by the state total.
+								</p>
+								<pre><code class="sql">
+WITH
+    total_ef AS(
+        SELECT id_ent, produccion AS ind_total
+        FROM ind_eco
+        WHERE
+            id_act = 999999
+            AND anio = 2019
+        ORDER BY 1
+    ),
+
+    ef AS(
+        SELECT e.id_ent, nom_ent, SUM(produccion) AS ind_ef
+        FROM ind_eco i
+        JOIN ent_nombre e
+        ON e.id_ent = i.id_ent
+        JOIN actividades a
+        ON i.id_act = a.id_act
+        JOIN clusters_actividades ca
+        ON ca.id_act = a.id_act
+        JOIN clusters c
+        ON c.id_clu = ca.id_clu
+        WHERE
+            a.id_act != 999999
+            AND anio = 2019
+            AND c.id_clu = 1
+        GROUP BY 1,2
+        ORDER BY 1
+    )
+
+SELECT nom_ent "State", ind_ef/ind_total "Percentage of State Total"
+FROM ef
+JOIN total_ef t
+ON ef.id_ent = t.id_ent
+ORDER BY 2;
+								</code></pre>
+								<span class="image fit"><img src="images/auto_prod_pct_ef.png" alt="Percentage of State Total Ranking" style="padding: 0px 100px 50px 100px"/></span>
+								<p>
+									We then calculated the percentage share of the automotive cluster's gross production in the national total by state for the 2019 census. 
+									For this we first had to obtain the national total and the cluster production of each state and then divide this by the national total.
+								</p>
+								<pre><code class="sql">
+WITH 
+    nac AS(
+        SELECT SUM(produccion) AS total_nac
+        FROM ind_eco i
+        JOIN ent_nombre e
+        ON i.id_ent = e.id_ent
+        JOIN actividades a
+        ON i.id_act = a.id_act
+        JOIN clusters_actividades ca
+        ON a.id_act = ca.id_act
+        JOIN clusters c
+        ON ca.id_clu = c.id_clu
+        WHERE
+            e.id_ent = 33
+            AND anio = 2019
+            AND c.id_clu = 1
+        GROUP BY e.id_ent
+    ),
+
+    ef AS(
+        SELECT e.id_ent, nom_ent, SUM(produccion) AS ind_ef
+        FROM ind_eco i
+        JOIN ent_nombre e
+        ON e.id_ent = i.id_ent
+        JOIN actividades a
+        ON i.id_act = a.id_act
+        JOIN clusters_actividades ca
+        ON ca.id_act = a.id_act
+        JOIN clusters c
+        ON c.id_clu = ca.id_clu
+        WHERE
+            a.id_act != 999999
+            AND e.id_ent != 33
+            AND anio = 2019
+            AND c.id_clu = 1
+        GROUP BY 1,2
+        ORDER BY 1
+    )
+
+SELECT 
+    nom_ent "State",
+    ind_ef/(SELECT total_nac FROM nac) AS "Share of National Total"
+FROM ef
+ORDER BY 2;
+								</code></pre>
+								<span class="image fit"><img src="images/auto_prod_par_nac.png" alt="Share of National Total Ranking" style="padding: 0px 100px 50px 100px"/></span>
+								<p>
+									In order to analyze the growth of the economic activities belonging to the Jalisco automotive cluster in recent years, tables were made for 
+									different classifications based on their subsector. For example, to review the variation of the gross production of non-metallic product 
+									manufacturing of the Jalisco automotive cluster in real terms, from 2013 to 2018 the following query was performed:
+								</p>
+								<pre><code class="sql">
+WITH
+    t1 AS(
+        SELECT 
+            a.id_act,
+            actividad
+        FROM actividades a
+        JOIN clusters_actividades ca
+        ON a.id_act = ca.id_act
+        JOIN subsector s
+        ON s.id_sub = a.id_sub
+        WHERE
+            id_clu = 1
+            AND id_cla = 1
+    ),
+
+    t2 AS(
+        SELECT
+            i.id_act,
+            produccion/0.80734756960351 AS "2013"
+        FROM ind_eco i
+        JOIN t1
+        ON i.id_act = t1.id_act
+        WHERE
+            id_ent = 14
+            AND anio = 2014
+    ),
+
+    t3 AS(
+        SELECT
+            i.id_act,
+            produccion AS "2018"
+        FROM ind_eco i
+        JOIN t1
+        ON i.id_act = t1.id_act
+        WHERE
+            id_ent = 14
+            AND anio = 2019
+    )
+
+SELECT
+    t1.id_act "Código SCIAN",
+    t1.actividad "Actividad Económica,
+    t2."2013",
+    t3."2018", 
+    t3."2018"- t2."2013" "Var Real",
+    t3."2018"/t2."2013" - 1 "Var %"
+FROM t1
+LEFT JOIN t2
+ON t1.id_act = t2.id_act
+LEFT JOIN t3
+ON t1.id_act = t3.id_act
+ORDER BY 1;
+								</code></pre>
+								<span class="image fit">
+									<img src="images/auto_prod_tabl_cla1.png" alt="Non-metallic Production Variation Table" style="padding: 0px 100px 50px 100px"/>
+								</span>
+								<p>
+									Similar to what was done with the economic census, for the DENUE information, a database was created with with information from Jalisco:
+								</p>
+								<p>
+									<ul>A database was created with 6 tables for the economic census information:
+										<li>DENUE (denue)</li>
+										<li>Economic Activities (actividades)</li>
+										<li>Subsectors (subsector)</li>
+										<li>Classifications (clasificacion)</li>
+										<li>Clusters (clusters)</li>
+										<li>Clusters-Activities Relationships (clusters_actividades)</li>
+									</ul>
+								</p>
+								<p>
+									To better understand the relationships of this data base and its contents, the following Entity Relationship Diagram is shown: <br>
+									<div class="image fit">
+										<img src="images/erd_clusters_denue.png" alt="DENUE ERD" style="padding: 0px 0px 0px 200px"/>
+									</div>
+								</p>
+								<p>
+									With this database, a table was made to see the economic units of the Jalisco automotive cluster in 2019 and 2024, number of establishments, 
+									percentage distribution, absolute and percentage variation.
+								</p>
+								<pre><code class="sql">
+WITH 
+    n2019 AS(
+        SELECT 
+        cla.id_cla,
+        COUNT(id_denue) AS n
+    FROM denue
+    JOIN actividades act
+    ON denue.id_act = act.id_act
+    JOIN subsector sub
+    ON act.id_sub = sub.id_sub
+    JOIN clasificacion cla
+    ON sub.id_cla = cla.id_cla
+    JOIN clusters_actividades ca
+    ON ca.id_act = act.id_act
+    JOIN clusters clu
+    ON clu.id_clu = ca.id_clu
+    WHERE
+        clu.id_clu = 1
+        AND anio = 2019
+    GROUP BY 1
+    ),
+
+    t19 AS(
+        SELECT 
+        *,
+        n/(SELECT SUM(N) FROM n2019) AS dist
+    FROM n2019
+    ),
+
+    n2024 AS(
+        SELECT 
+            cla.id_cla,
+            COUNT(id_denue) AS n
+        FROM denue
+        JOIN actividades act
+        ON denue.id_act = act.id_act
+        JOIN subsector sub
+        ON act.id_sub = sub.id_sub
+        JOIN clasificacion cla
+        ON sub.id_cla = cla.id_cla
+        JOIN clusters_actividades ca
+        ON ca.id_act = act.id_act
+        JOIN clusters clu
+        ON clu.id_clu = ca.id_clu
+        WHERE
+            clu.id_clu = 1
+            AND anio = 2024
+        GROUP BY 1
+    ),
+
+    t24 AS(
+        SELECT 
+            *,
+            n/(SELECT SUM(N) FROM n2024) AS dist
+        FROM n2024
+    )
+
+SELECT
+    cla.clasificacion AS "Clasificación",
+    t19.n AS "N 2019",
+    t19.dist AS "Dist% 2019",
+    t24.n AS "N 2024",
+    t24.dist AS "Dist% 2024",
+    t24.n - t19.n AS "Var Absoluta",
+    CAST(t24.n AS FLOAT)/CAST(t19.n AS FLOAT) - 1 AS "Var %"
+FROM t19
+FULL OUTER JOIN t24
+ON t19.id_cla = t24.id_cla
+JOIN clasificacion cla
+ON cla.id_cla = t19.id_cla;
+								</code></pre>
+								<span class="image fit">
+									<img src="images/auto_tab_com_ue_x_cla.png" alt="Establishments Variation Table" style="padding: 0px 100px 50px 100px"/>
+								</span>
+								<p>
+									In general terms for the DENUE information, tables similar to that of the economic censuses were made but to compare the economic units for more recent years (2019-2024). 
+									Below is an example of the SQL scripts used to create the tables:
+								</p>
+								<pre><code class="sql">
+WITH
+    t1 AS(
+        SELECT
+            a.id_act,
+            a.actividad
+        FROM actividades a
+        JOIN subsector s
+        ON a.id_sub = s.id_sub
+        JOIN clasificacion cla
+        ON s.id_cla = cla.id_cla
+        JOIN clusters_actividades ca
+        ON a.id_act = ca.id_act
+        JOIN clusters c
+        ON ca.id_clu = c.id_clu
+        WHERE
+            c.id_clu = 1
+            AND cla.id_cla = 1
+    ),
+
+    t2 AS(
+        SELECT 
+            d.id_act,
+            COUNT(*) AS "2019"
+        FROM t1
+        JOIN denue d
+        ON d.id_act = t1.id_act
+        WHERE anio = 2019
+        GROUP by 1
+    ),
+
+    t3 AS(
+        SELECT 
+            d.id_act,
+            COUNT(*) AS "2024"
+        FROM denue d
+        JOIN t1
+        ON d.id_act = t1.id_act
+        WHERE anio = 2024
+        GROUP by 1
+    )
+    
+SELECT
+    t1.id_act AS "Código SCIAN",
+    t1.actividad AS "Actividad económica",
+    t2."2019",
+    t3."2024",
+    t3."2024" -  t2."2019" AS "Var absoluta",
+    CAST(t3."2024" AS FLOAT)/CAST(t2."2019" AS FLOAT) - 1 AS "Var %"
+FROM t1
+LEFT JOIN t2
+ON t1.id_act = t2.id_act
+LEFT JOIN t3
+ON t1.id_act = t3.id_act
+ORDER BY 1;
+								</code></pre>
+								<span class="image fit">
+									<img src="images/auto_unec_tabl_cla1.png" alt="Establishments Variation Table" style="padding: 0px 100px 50px 100px"/>
+								</span>
+
+								<br>
+								<br>
+								<h3>Tableau Dashboards Preparation</h3>
+								<p>
+									Since we have the visualizations at the top, we do not go as deeply into each step to create them, but some aspects that are not so easily seen are developed below.
+								</p>
+								<p>
+									In order to adapt the state comparison dashboard to each of the indicators (production, employment, assets or establishments), a parameter was created to which a calculated field was subsequently linked.
+								</p>
+								<span class="image fit">
+									<img src="images/param_selec_ind.png" alt="Parameter concentration" style="padding: 0px 10px 50px 10px"/>
+								</span>
+								<p>
+									The calculated field [Indicador Seleccionado] used a CASE with the parameter [Seleccionar Indicador] to be able to adapt the display depending on the selected indicator as shown:
+								</p>
+								<pre><code>
+CASE [Seleccionar Indicador]
+	WHEN 'Producción bruta' THEN [Produccion]
+	WHEN 'Personal ocupado' THEN [Personal]
+	WHEN 'Activos fijos' THEN [Activos]
+	WHEN 'Unidades económicas' THEN [Unidades Eco]
+<b>END</b>
+								</code></pre>
+								<p>
+									To highlight the color of Jalisco in the bar charts, a calculated field called [Color Jalisco ] was also created as shown in the following image:
+								</p>
+								<span class="image fit">
+									<img src="images/color_jalisco.png" alt="Calculated Filed Color Jalisco" style="padding: 0px 10px 50px 10px"/>
+								</span>
+								<P>
+									As for the maps produced with the DENUE for the state of Jalisco, it is worth mentioning that in order to link the municipalities shapefile with the table of municipalities 
+									and regions names it was necessary to convert the municipality field in the shapefile with INT([CVE_MUN]) to an integer. 
+									All files can be downloaded from the <a href="https://github.com/arturocavi/cluster_supply">Github repository</a>.
+								</P>
+							</p>
+							<span class="image fit">
+								<img src="images/mun_shp.png" alt="Municipality relationship diagram" style="padding: 0px 10px 50px 10px"/>
+							</span>
+							<p>
+								Since there is no exact information on the employed personnel of the establishment, but there are ranges, to include the aspect of the size of the 
+								establishment in the density map, I used the intermediate values for each range according to the size of each economic unit as shown in the following CASE:
+							</p>
+							<pre><code>
+CASE [Per Ocu]
+WHEN '0 a 5 personas' THEN 2
+WHEN '6 a 10 personas' THEN 8
+WHEN '11 a 30 personas' THEN 20
+WHEN '31 a 50 personas' THEN 40
+WHEN '51 a 100 personas' THEN 75
+WHEN '101 a 250 personas' THEN 175
+WHEN '251 y más personas' THEN 251
+END
+							</code></pre>
+							<p>
+								I dragged this field to the Colour button on the Marks card so that the heat map could show more clearly where the economic activity is concentrated 
+								taking into account the pool of workers in the area.
+							</p>
+							<span class="image fit">
+								<img src="images/mapa_calor_case.png" alt="Heat Map of Guadalajara" style="padding: 0px 10px 50px 10px"/>
+							</span>
+							<p>
+								In order for the interactivity of the location map and directory to work properly, a Filter Action had to be added so that when the establishments of 
+								interest were selected on the map, their information would be highlighted in the directory table. 
+							</p>
+							<span class="image fit">
+								<img src="images/filter_action_dir.png" alt="Filter Action" style="padding: 0px 10px 50px 10px"/>
+							</span>
+
+							<br>
+							<br>
+							<h2>Information Sources</h2>
+							<p>
+								<b>INEGI</b> (2004-2019) <em>Censos Económicos</em>. <a href="https://www.inegi.org.mx/programas/ce/2019/" target="_blank">https://www.inegi.org.mx/programas/ce/2019/</a> <br>
+								<b>INEGI</b> (2019-2024) <em>DENUE</em>. <a href="https://www.inegi.org.mx/app/descarga/" target="_blank">https://www.inegi.org.mx/app/descarga/</a>
+							</p>
+							</section>
+					</div>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>Arturo Carrillo Villarreal</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

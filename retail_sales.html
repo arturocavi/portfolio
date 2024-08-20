@@ -1,0 +1,921 @@
+<!DOCTYPE HTML>
+<!--
+	Portafolio V1
+	01/08/2024
+-->
+<html>
+	<head>
+		<title>Global Retail Sales Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Portfolio</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">Projects</a></li>
+							<li><a href="about.html">About me</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/arturocv/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/arturocavi" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Global Retail Sales Analytics</h1>
+									<p>Analysis of the global sales of a retail chain using a Power BI report and SQL queries to answer specific questions</p>
+								</header>
+								<h2>Overview</h2>
+								<p>
+									In order to analyze the global sales of a retail chain of office and stationery items, an interactive report was created in Power BI.
+									SQL queries were performed to answer specific questions about the last semester. In addition to the creation of the tables, Claude AI was 
+									used to support the discovery of insights and analysis of the queries.
+								</p>
+
+								<br>
+								<br>
+								<h2>Technologies Used</h2>
+								<ul>
+									<li>SQL</li>
+									<li>Power BI</li>
+									<li>Power Query</li>
+									<li>DAX</li>
+									<li>Claude AI</li>
+								</ul>
+
+								<br>
+								<br>
+								<h2>Interactive Report (Power BI)</h2>
+								<p>
+									First, the Power BI report is shown to review different aspects of interest and interact with it. Subsequently, the process of how it was done 
+									is shown, as well as the queries elaborated to analyze the information.
+								</p>
+								<div class="pbi_div">
+									<iframe title="Global Store Retail Sales Analytics vi-4" width="1024" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiYWUwMDVjM2EtZmNmYy00YjNhLWE5ZmMtODNjZmI0N2UxZjliIiwidCI6IjZmMDM0OGYyLWU0OTgtNDVjOS04NGY0LWM2ZDgxZGNmZmRmZSIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>	
+								</div>
+								<br>
+								<p style="text-align: center">
+									<a href="https://app.powerbi.com/view?r=eyJrIjoiYWUwMDVjM2EtZmNmYy00YjNhLWE5ZmMtODNjZmI0N2UxZjliIiwidCI6IjZmMDM0OGYyLWU0OTgtNDVjOS04NGY0LWM2ZDgxZGNmZmRmZSIsImMiOjR9" target="_blank">Click here to view the report in full screen mode</a>
+								</p>
+								
+								<br>
+								<br>
+								<h2>Process</h2>
+								<br>
+								<h3>Data Preparation</h3>
+								<p>
+									<ul>First, the base had to be normalized to go from a single Excel sheet to 4 tables:
+										<li>Orders</li>
+										<li>Customers</li>
+										<li>Products</li>
+										<li>Cities</li>
+									</ul>
+								</p>
+								<p>
+									For this purpose, Excel functions such as CONCATENATE, LEFT, IFERROR, VLOOKUP, etc. were used to clean the data, in addition to eliminating 
+									duplicates and other arithmetic operations.
+								</p>
+								<p>
+									Once the table was normalized, a review of the data was performed in Power Query to make sure that the data would be useful for DAX calculations 
+									and visualizations. For example, I replaced the null values in the Discount column in the Orders table to be able to make some sales and profit 
+									calculations, or in the tables where the headers were not identified, I used the first row as headers and change the column data types 
+									to the appropriate data type.
+								</p>
+
+								<p>
+									In order to improve the presentation of the visualizations, a common date table was created with the following DAX formulas:
+									<pre><code>
+Year = YEAR('Date'[Date])
+Quarter Number = QUARTER('Date'[Date])
+Quarter = CONCATENATE("Q",'Date'[Quarter Number])
+Month Number = MONTH('Date'[Date])
+Month = FORMAT('Date'[Date], "mmm")
+Period = FORMAT('Date'[Date], "MMMM of YYYY")
+Quarter Period = 'Date'[Year] & " " & 'Date'[Quarter]
+									</code></pre>
+								</p>
+								<p>
+									To better understand the relationships of the database and its contents, the model and its relationships are shown below:
+								</p>
+								<span class="image fit">
+									<img src="images/grsa_data_model.png" alt="Data Modelo" style="padding: 0px 100px 0px 100px"/>
+								</span>
+								<br>
+								<h3>DAX Measures</h3>
+								<p>
+									For the creation of measures such as sales, rate of returned products, profit margin, etc., as well as those necessary for the creation of KPIs, different DAX measures were used.
+								</p>
+								<h4>Measures of Sales, Profit, Margins and YoY%</h4>
+								<p>
+									To estimate total sales the discount and order quantity had to be taken into account, while for profit, profit margin and YoY variations the following measures were created with DAX:
+								</p>
+								<pre><code>
+Sales = SUMX(Orders, Orders[Unit Price] * (1 - Orders[Discount]) * Orders[Quantity])
+
+Profit = SUMX(Orders, [Sales] - (Orders[Unit Cost] * Orders[Quantity]))
+
+Profit Margin = [Profit]/[Sales]
+
+Sales YoY% = 
+    VAR LastYearSales =
+        CALCULATE(
+            [Sales],
+            SAMEPERIODLASTYEAR('Date'[Date])
+        )
+    RETURN
+        DIVIDE(
+            [Sales] - LastYearSales,
+            LastYearSales
+        )
+
+Profit YoY% = 
+    VAR LastYearProfit = 
+        CALCULATE(
+            [Profit],
+            SAMEPERIODLASTYEAR('Date'[Date])
+        )
+    RETURN
+        DIVIDE(
+            [Profit] - LastYearProfit,
+            LastYearProfit
+        )
+								</code></pre>
+								<h4>Returned Product Measures</h4>
+								<p>
+									In order to analyze the rate of returned products and to better monitor this problem, the following measures were taken:
+								</p>
+								<pre><code>
+Returned % = DIVIDE([Returned Count], COUNT(Orders[Row ID]))
+
+Returned % Last Q = 
+    CALCULATE(
+        DIVIDE([Returned Count], COUNT(Orders[Row ID])),
+        DATESQTD(ENDOFQUARTER('Date'[Date]))
+    )
+
+Returned Count = COUNTX(FILTER(Orders, Orders[Returned] = "Yes"), Orders[Row ID])
+								</code></pre>
+								<h4>KPI Measures</h4>
+								<p>
+									In order to elaborate the KPIs, the following measures were taken to make the visualizations more attractive and to allow a quick 
+									identification of the situation of the variables and their trend:
+								</p>
+								<pre><code>
+Last Year Sales = CALCULATE([Sales], SAMEPERIODLASTYEAR('Date'[Date]))
+
+Sales Diff with Arrow = 
+    VAR Up = UNICHAR(129129)
+    VAR Down = UNICHAR(129131) 
+    VAR SalesDiff = [Sales] - [Last Year Sales]
+RETURN
+    IF(
+        SalesDiff &lt 0,
+        Down & " " & FORMAT(ROUND( SalesDiff/1000,0) , "#,###") & "K", 
+        Up & " " & FORMAT(ROUND( SalesDiff/1000,0) , "#,###") & "K"
+    )
+
+Sales YoY Target Difference = [Sales YoY%] - [Sales YoY Target]
+
+Sales YoY Target Diff with Arrow = 
+    VAR Up = UNICHAR(129129)
+    VAR Down = UNICHAR(129131) 
+    VAR Diff = [Sales YoY Target Difference]
+RETURN
+    IF(
+        Diff &lt 0,
+        Down & " " & FORMAT(Diff, "###.0%"), 
+        Up & " " & FORMAT(Diff, "###.0%")
+    )
+
+
+Last Year Profit = CALCULATE([Profit], SAMEPERIODLASTYEAR('Date'[Date]))
+
+Profit Diff with Arrow = 
+    VAR Up = UNICHAR(129129)
+    VAR Down = UNICHAR(129131) 
+    VAR ProfitDiff = [Profit] - [Last Year Profit]
+RETURN
+    IF(
+        ProfitDiff &lt 0,
+        Down & " " & FORMAT(ROUND( ProfitDiff/1000,0) , "#,###") & "K", 
+        Up & " " & FORMAT(ROUND( ProfitDiff/1000,0) , "#,###") & "K"
+    )
+
+Profit YoY Target Difference = [Profit YoY%] - [Profit YoY Target]
+
+Profit YoY Target Diff with Arrow = 
+    VAR Up = UNICHAR(129129)
+    VAR Down = UNICHAR(129131) 
+    VAR Diff = [Profit YoY Target Difference]
+RETURN
+    IF(
+        Diff &lt 0,
+        Down & " " & FORMAT(Diff, "###.0%"), 
+        Up & " " & FORMAT(Diff, "###.0%")
+    )
+
+
+
+Profit Margin Target Difference = [Profit Margin] - [Profit Margin Target]
+
+Profit Margin Target Gap with Arrow = 
+    VAR Up = UNICHAR(129129)
+    VAR Down = UNICHAR(129131) 
+    VAR Diff = [Profit Margin Target Difference]
+RETURN
+    IF(
+        Diff &lt 0,
+        Down & " " & FORMAT(Diff, "###.0%"), 
+        Up & " " & FORMAT(Diff, "###.0%")
+    )
+								</code></pre>
+
+								<br>
+								<h3>Power BI Report Preparation</h3>
+								<p>
+									Since the report is available at the top, I won't go as deeply into each step to create it, but some aspects that are not so easily seen are developed below.
+								</p>
+								<p>
+									To make the KPIs, the DAX formulas mentioned above were used to show the arrow indicating the trend, while a conditional formatting 
+									on the value of the Reference labels was used to make it change color as shown below. I downloaded the icon cards from 
+									<a href="https://www.flaticon.com/" target="_blank">flaticon.com</a> and I put a space between image and callout of 4px and a size of 30px.
+								</p>
+								<span class="image fit">
+									<img src="images/kpi_conditional_format.png" alt="KPI Color Conditional Formatting" style="padding: 0px 10px 50px 10px"/>
+								</span>
+								<p>
+									To make the “Sales and Sales YoY% by Year” and “Profit and Profit YoY% by Year” graphs appear as the tab was selected, I inserted some shapes to 
+									function as buttons to which I assigned a bookmark to display the corresponding graphs and shapes. I used some shapes as “inactive buttons” so 
+									that it was better understood that this option was being selected and the other tab was inactive.
+								</p>
+								<span class="image fit">
+									<img src="images/bookmark_buttons.png" alt="Bookmark Buttons" style="padding: 0px 10px 50px 10px"/>
+								</span>
+								<p>
+									Since the Market field has a hierarchy, you can drill down for a more disaggregated analysis. The Market hierarchy is 
+									Market &gt; Region &gt; Country &gt; State &gt; City
+								</p>
+								<span class="image fit">
+									<img src="images/sales_by_market_drill.png" alt="Sales by Market Donut Chart" style="padding: 0px 200px 50px 200px"/>
+								</span>
+								<p>
+									Also, the Market field was added to the drill-through well in the Regions tab so that each region can be analyzed in more detail and more details of a market of 
+									interest can be obtained from the visualizations containing this field.
+								</p>
+								<span class="image fit">
+									<img src="images/asia_pacific_drill-through.png" alt="Asia Pacific Drill-Through" style="padding: 0px 10px 50px 10px"/>
+								</span>
+
+
+								<br>
+								<h3>SQL Queries</h3>
+								<p>
+									<ol>Specific SQL queries were performed to answer the following 4 questions about the last semester:
+										<li>Which products have the best profit margin by subcategory?</li>
+										<li>Which are the customers that spends the most for each business segment?</li>
+										<li>Are the top products by sales the same as the top products by profit?</li>
+										<li>Are the top cities by sales the same as the top cities by profit?</li>
+									</ol>
+								</p>
+								<p>
+									Below are the queries that were made to obtain the tables necessary to perform the analysis, which is found in a later section.
+								</p>
+								<p>
+									First, I made View with the sales and earnings figures for the last six months ended to be used in the following queries.
+								</p>
+								<pre><code class="sql">
+-- Sales & Profit Figures for 2023 S2 View
+CREATE OR REPLACE VIEW v_figures AS
+SELECT 
+    id_row,
+    order_date,
+    id_customer,
+    id_city,
+    id_product,
+    unit_price * (1 - COALESCE(discount,0)) * quantity AS sales,
+    unit_price * (1 - COALESCE(discount,0)) * quantity - unit_cost * quantity AS profit
+FROM orders
+WHERE order_date BETWEEN '2023-07-01' AND '2023-12-31';
+								</code></pre>
+
+								<h4>Which products have the best profit margin by subcategory?</h4>
+								<p>
+									I made the following query to identify which were the products with the best profit margins by sub-category:
+								</p>
+								<pre><code class="sql">
+-- Profit Margin by Category View
+CREATE OR REPLACE VIEW v_product_profit_margin AS
+SELECT 
+    f.id_product,
+    product_name AS product,
+    subcategory,
+    category,
+    SUM(sales) AS sales,
+    SUM(profit) AS profit,
+    SUM(profit)/SUM(sales) AS profit_margin
+FROM v_figures f
+LEFT JOIN products p 
+ON  f.id_product = p.id_product
+GROUP BY 1,2,3,4;
+
+
+-- Export Top Products by Profit Margin by Sub-Category
+COPY(
+    WITH max_profit_margin_products AS(
+        SELECT
+            *,
+            MAX(profit_margin) OVER(PARTITION BY subcategory) AS max_pm
+        FROM v_product_profit_margin
+        ORDER BY max_pm
+    )
+    SELECT 
+        category,
+        subcategory,
+        id_product,
+        product,
+        ROUND(profit_margin*100,2) AS profit_margin
+    FROM max_profit_margin_products
+    WHERE profit_margin = max_pm
+    ORDER BY 1,2
+)
+TO 'C:\temp\global_store\queries\top_products_by_margin.csv'
+WITH(
+    FORMAT CSV,
+    HEADER TRUE,
+    ENCODING 'WIN1252'
+);
+								</code></pre>
+									
+									<br>
+									<h4>Which are the customers that spends the most for each business segment?</h4>
+									<p>
+										Then I made another query to identify which were the customers that spent the most for each business segment:
+									</p>
+									<pre><code class="sql">
+-- Customer Rankings View
+CREATE OR REPLACE VIEW v_customer_ranking AS
+WITH
+    customer_sales AS (
+        SELECT
+            f.id_customer,
+            customer_name AS customer,
+            segment,
+            country,
+            SUM(sales) AS sales
+        FROM v_figures f
+        LEFT JOIN customers c
+        ON f.id_customer = c.id_customer
+        LEFT JOIN cities ci
+        ON f.id_city = ci.id_city
+        GROUP BY 1,2,3,4
+    )
+
+SELECT
+    *,
+    DENSE_RANK() OVER(PARTITION BY segment ORDER BY sales DESC) AS sales_rank
+FROM customer_sales
+
+
+-- Export Top 5 Customers by Sales by Segment
+COPY (
+    SELECT 
+        segment,
+        sales_rank,
+        id_customer,
+        customer,
+        country,
+        ROUND(sales,0) AS sales
+    FROM v_customer_ranking
+    WHERE sales_rank &lt;= 5
+    ORDER BY 1, 2 ASC
+)
+TO 'C:\temp\global_store\queries\top_customers_by_sales.csv'
+WITH (
+    FORMAT CSV,
+    HEADER TRUE,
+    ENCODING 'WIN1252'
+);
+									</code></pre>
+
+										<br>
+										<h4>Are the top products by sales the same as the top products by profit?</h4>
+										<p>
+											To answer the question of whether the best-selling products were the ones that generated the most profits according to each category, 
+											I made two queries, one for the sales and another for the profits, then I made the analysis (which is avialable in a later section). 
+											Below, for illustrative purposes only the queries are shown to see how they were made.
+										</p>
+										<pre><code class="sql">
+-- Product Rankings View
+CREATE OR REPLACE VIEW v_product_rankings AS
+WITH
+    product_figures AS(
+        SELECT 
+            product_name AS product,
+            category,
+            ROUND(SUM(sales),0) AS sales,
+            ROUND(SUM(profit),0) AS profit
+        FROM v_figures f
+        LEFT JOIN products p
+        ON f.id_product = p.id_product
+        GROUP BY 1,2
+    )
+
+SELECT
+    *,
+    RANK() OVER(PARTITION BY category ORDER BY sales DESC) AS sales_rank,
+    RANK() OVER(PARTITION BY category ORDER BY profit DESC) AS profit_rank
+FROM product_figures;
+
+
+-- Export Top 3 Products by Sales by Category
+COPY (
+    SELECT
+        category,
+        sales_rank,
+        product,
+        sales
+    FROM v_product_rankings
+    WHERE sales_rank &lt;= 3
+    ORDER BY 1, 2 ASC
+)
+TO 'C:\temp\global_store\queries\top_products_by_sales.csv'
+WITH (
+    FORMAT CSV,
+    HEADER TRUE,
+    ENCODING 'WIN1252'
+);
+
+
+-- Export Top 3 Products by Profit by Category
+COPY (
+    SELECT
+        category,
+        profit_rank,
+        product,
+        profit
+    FROM v_product_rankings
+    WHERE profit_rank &lt;= 3
+    ORDER BY 1, 2 ASC
+)
+TO 'C:\temp\global_store\queries\top_products_by_profit.csv'
+WITH (
+    FORMAT CSV,
+    HEADER TRUE,
+    ENCODING 'WIN1252'
+);
+										</code></pre>
+
+										<br>
+										<h4>Are the top cities by sales the same as the top cities by profit?</h4>
+										<p>
+											To answer the question of whether the top cities by sales were the same as the top cities by profit I also made two queries for sales and profits. 
+											The analysis of this information can also be found in a later section. Only the queries are shown below.
+										</p>
+										<pre><code class="sql">
+-- City Rankings View
+CREATE OR REPLACE VIEW v_city_rankings AS
+WITH
+    city_figures AS(
+        SELECT 
+            city,
+            country,
+            market,
+            ROUND(SUM(sales),0) AS sales,
+            ROUND(SUM(profit),0) AS profit
+        FROM v_figures f
+        LEFT JOIN cities c
+        ON f.id_city = c.id_city
+        GROUP BY 1,2,3
+    )
+
+SELECT
+    *,
+    RANK() OVER(PARTITION BY market ORDER BY sales DESC) AS sales_rank,
+    RANK() OVER(PARTITION BY market ORDER BY profit DESC) AS profit_rank
+FROM city_figures;
+
+
+-- Export Top 3 Cities by Sales by Market
+COPY (
+    SELECT
+        market,
+        sales_rank,
+        city,
+        country,
+        sales
+    FROM v_city_rankings
+    WHERE sales_rank &lt;= 3
+    ORDER BY 1, 2 ASC
+)
+TO 'C:\temp\global_store\queries\top_cities_by_sales.csv'
+WITH (
+    FORMAT CSV,
+    HEADER TRUE,
+    ENCODING 'WIN1252'
+);
+
+
+-- Export Top 3 Cities by Profit by Market
+COPY (
+    SELECT
+        market,
+        profit_rank,
+        city,
+        country,
+        profit
+    FROM v_city_rankings
+    WHERE profit_rank &lt;= 3
+    ORDER BY 1, 2 ASC
+)
+TO 'C:\temp\global_store\queries\top_cities_by_profit.csv'
+WITH (
+    FORMAT CSV,
+    HEADER TRUE,
+    ENCODING 'WIN1252'
+);
+										</code></pre>
+
+										<br>
+										<br>
+										<h2>Analysis</h2>
+										<p>
+											In addition to the creation of the tables, Claude AI was used to support the discovery of insights and analysis of the queries.
+										</p>
+										<h3>Which products have the best profit margin by subcategory?</h3>
+										<p>
+											The following table shows the products with the best profit margins by subcategory
+										</p>
+										<table class="table table-bordered table-hover table-condensed">
+											<thead><tr><th title="Field #1">category</th>
+											<th title="Field #2">subcategory</th>
+											<th title="Field #3">id_product</th>
+											<th title="Field #4">product</th>
+											<th title="Field #5">profit_margin</th>
+											</tr></thead>
+											<tbody><tr>
+											<td>Furniture</td>
+											<td>Bookcases</td>
+											<td>FUR-BO-5780</td>
+											<td>Safco Floating Shelf Set, Traditional</td>
+											<td align="right">41.21</td>
+											</tr>
+											<tr>
+											<td>Furniture</td>
+											<td>Chairs</td>
+											<td>FUR-CH-5803</td>
+											<td>SAFCO Steel Folding Chair, Set of Two</td>
+											<td align="right">41.94</td>
+											</tr>
+											<tr>
+											<td>Furniture</td>
+											<td>Furnishings</td>
+											<td>FUR-FU-3953</td>
+											<td>Deflect-O Photo Frame, Erganomic</td>
+											<td align="right">48.99</td>
+											</tr>
+											<tr>
+											<td>Furniture</td>
+											<td>Tables</td>
+											<td>FUR-TA-3421</td>
+											<td>Bevis Conference Table, Rectangular</td>
+											<td align="right">48.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Appliances</td>
+											<td>OFF-AP-4748</td>
+											<td>Hoover Toaster, Silver</td>
+											<td align="right">45.97</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Art</td>
+											<td>OFF-AR-5633</td>
+											<td>Prang Dustless Chalk Sticks</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Binders</td>
+											<td>OFF-BI-3326</td>
+											<td>Avery Triangle Shaped Sheet Lifters, Black, 2/Pack</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Envelopes</td>
+											<td>OFF-EN-6359</td>
+											<td>White Business Envelopes with Contemporary Seam, Recycled White Business Envelopes</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Fasteners</td>
+											<td>OFF-FA-5459</td>
+											<td>OIC Binder Clips</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Labels</td>
+											<td>OFF-LA-3193</td>
+											<td>Avery 475</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Paper</td>
+											<td>OFF-PA-3012</td>
+											<td>Adams Telephone Message Book w/Frequently-Called Numbers Space, 400 Messages per Book</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Paper</td>
+											<td>OFF-PA-6308</td>
+											<td>Tops Green Bar Computer Printout Paper</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Paper</td>
+											<td>OFF-PA-6440</td>
+											<td>Xerox 1890</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Storage</td>
+											<td>OFF-ST-4062</td>
+											<td>Eldon Folders, Single Width</td>
+											<td align="right">46.91</td>
+											</tr>
+											<tr>
+											<td>Office Supplies</td>
+											<td>Supplies</td>
+											<td>OFF-SU-4127</td>
+											<td>Elite Scissors, Easy Grip</td>
+											<td align="right">45.96</td>
+											</tr>
+											<tr>
+											<td>Technology</td>
+											<td>Accessories</td>
+											<td>TEC-AC-3389</td>
+											<td>Belkin Memory Card, Erganomic</td>
+											<td align="right">50.00</td>
+											</tr>
+											<tr>
+											<td>Technology</td>
+											<td>Copiers</td>
+											<td>TEC-CO-4770</td>
+											<td>HP Fax and Copier, Digital</td>
+											<td align="right">46.98</td>
+											</tr>
+											<tr>
+											<td>Technology</td>
+											<td>Machines</td>
+											<td>TEC-MA-4594</td>
+											<td>Hewlett-Packard 300S Scientific Calculator</td>
+											<td align="right">46.00</td>
+											</tr>
+											<tr>
+											<td>Technology</td>
+											<td>Phones</td>
+											<td>TEC-PH-5825</td>
+											<td>Samsung Headset, Full Size</td>
+											<td align="right">49.98</td>
+											</tr>
+											</tbody></table>
+
+											<p>
+												Note that in the Office Supplies category, several subcategories have products with a 50% profit margin, which is the highest in the dataset.
+											</p>
+
+											<br>
+											<h3>Which are the customers that spends the most for each business segment?</h3>
+											<p>
+												The following table shows the customers that spent the most for each business segment.
+											</p>
+											<table class="table table-bordered table-hover table-condensed">
+												<thead><tr><th title="Field #1">segment</th>
+												<th title="Field #2">sales_rank</th>
+												<th title="Field #3">id_customer</th>
+												<th title="Field #4">customer</th>
+												<th title="Field #5">country</th>
+												<th title="Field #6">sales</th>
+												</tr></thead>
+												<tbody><tr>
+												<td>Consumer</td>
+												<td align="right">1</td>
+												<td>HL-150401406</td>
+												<td>Hunter Lopez</td>
+												<td>United States</td>
+												<td align="right">10523</td>
+												</tr>
+												<tr>
+												<td>Consumer</td>
+												<td align="right">2</td>
+												<td>SV-203651406</td>
+												<td>Seth Vernon</td>
+												<td>United States</td>
+												<td align="right">8299</td>
+												</tr>
+												<tr>
+												<td>Consumer</td>
+												<td align="right">3</td>
+												<td>DL-133158</td>
+												<td>Delfina Latchford</td>
+												<td>Austria</td>
+												<td align="right">7384</td>
+												</tr>
+												<tr>
+												<td>Consumer</td>
+												<td align="right">4</td>
+												<td>HG-1484545</td>
+												<td>Harry Greene</td>
+												<td>France</td>
+												<td align="right">6286</td>
+												</tr>
+												<tr>
+												<td>Consumer</td>
+												<td align="right">5</td>
+												<td>LT-7110117</td>
+												<td>Liz Thompson</td>
+												<td>South Africa</td>
+												<td align="right">6098</td>
+												</tr>
+												<tr>
+												<td>Corporate</td>
+												<td align="right">1</td>
+												<td>VG-2180558</td>
+												<td>Vivek Grady</td>
+												<td>India</td>
+												<td align="right">9032</td>
+												</tr>
+												<tr>
+												<td>Corporate</td>
+												<td align="right">2</td>
+												<td>GT-146351408</td>
+												<td>Grant Thornton</td>
+												<td>United States</td>
+												<td align="right">8167</td>
+												</tr>
+												<tr>
+												<td>Corporate</td>
+												<td align="right">3</td>
+												<td>PJ-1883564</td>
+												<td>Patrick Jones</td>
+												<td>Italy</td>
+												<td align="right">7959</td>
+												</tr>
+												<tr>
+												<td>Corporate</td>
+												<td align="right">4</td>
+												<td>TS-213701406</td>
+												<td>Todd Sumrall</td>
+												<td>United States</td>
+												<td align="right">6492</td>
+												</tr>
+												<tr>
+												<td>Corporate</td>
+												<td align="right">5</td>
+												<td>CP-1234058</td>
+												<td>Christine Phan</td>
+												<td>India</td>
+												<td align="right">5614</td>
+												</tr>
+												<tr>
+												<td>Home Office</td>
+												<td align="right">1</td>
+												<td>TA-213851406</td>
+												<td>Tom Ashbrook</td>
+												<td>United States</td>
+												<td align="right">13716</td>
+												</tr>
+												<tr>
+												<td>Home Office</td>
+												<td align="right">2</td>
+												<td>BF-1100558</td>
+												<td>Barry Franz</td>
+												<td>India</td>
+												<td align="right">9287</td>
+												</tr>
+												<tr>
+												<td>Home Office</td>
+												<td align="right">3</td>
+												<td>PO-919586</td>
+												<td>Phillina Ober</td>
+												<td>Morocco</td>
+												<td align="right">7065</td>
+												</tr>
+												<tr>
+												<td>Home Office</td>
+												<td align="right">4</td>
+												<td>EH-1412545</td>
+												<td>Eugene Hildebrand</td>
+												<td>France</td>
+												<td align="right">5697</td>
+												</tr>
+												<tr>
+												<td>Home Office</td>
+												<td align="right">5</td>
+												<td>BE-1133527</td>
+												<td>Bill Eplett</td>
+												<td>China</td>
+												<td align="right">4913</td>
+												</tr>
+												</tbody></table>
+												<p>
+													<ul>Regarding the customers that spends the most for each business segment, the following was found:
+														<li>The United States appears most frequently (5 times), besides the fact that the US has top consumers in all three segments, indicating it's a significant market.</li>
+														<li>India appears three times, all in different segments, suggesting strong performance across segments in this market.</li>
+														<li>The highest overall sales come from the Home Office segment, with Tom Ashbrook (US) at $13,716. However, Home Office has the highest top sale ($13,716) and the lowest top 5 sale ($4,913).</li>
+													</ul>
+												</p>
+
+												<br>
+												<h3>Are the top products by sales the same as the top products by profit?</h3>
+												<p>
+													With regard to the question of whether the best-selling products are the ones that generate the most profits according to each category, the following was found:
+													<ul>
+														<li>The Office Supplies category shows the highest similarity between top products by sales and profit, with 2 out of 3 products being identical.</li>
+														<li>The Technology category also shows high similarity, with all three products appearing in both lists, albeit in different orders.</li>
+														<li>The Furniture category shows no overlap between top products by sales and profit, indicating that the products with the highest sales are not necessarily the most profitable in this category.</li>
+													</ul>
+												</p>
+												<p>
+													In conclusion, the top products by sales are partially the same as the top products by profit, with the degree of similarity 
+													varying by category. The Technology and Office Supplies categories show significant overlap, while the Furniture category shows 
+													no overlap at all. This suggests that in some categories (like Technology and Office Supplies), high sales volume often correlates 
+													with high profitability, while in others (like Furniture), there might be factors such as higher margins on certain items that 
+													don't necessarily have the highest sales volumes.
+												</p>
+
+												<br>
+												<h3>Are the top cities by sales the same as the top cities by profit?</h3>
+												<p>
+													In relation to the question of whether the cities that generate the most sales are the same as those that generate the most 
+													profits according to each market, the following was found:
+													<ul>
+														<li>The USCA market shows the highest similarity, with 2 out of 3 cities appearing in both lists.</li>
+														<li>Africa also shows significant overlap, with 2 out of 3 cities in both lists.</li>
+														<li>Europe and LATAM each have one city appearing in both lists.</li>
+														<li>Asia Pacific shows no overlap between the top cities by sales and profit.</li>
+													</ul>
+												</p>
+												<p>
+													Overall, the top cities by sales are partially the same as the top cities by profit, but there are significant differences:
+													<ul>
+														<li>Only 6 out of 15 cities (40%) appear in both lists across all markets.</li>
+														<li>New York City is the top city for both sales and profit in the USCA market.</li>
+														<li>Managua (Nicaragua) is the top city for both sales and profit in the LATAM market.</li>
+														<li>The order of cities often differs between sales and profit rankings, even when they appear in both lists.</li>
+														<li>The Asia Pacific market shows the most disparity, with completely different cities in the sales and profit lists.</li>
+													</ul>
+												</p>
+												<p>
+													These differences suggest that high sales volume doesn't always translate directly to high profits. Factors such as costs, 
+													pricing strategies, and product mix likely play significant roles in determining profitability in different cities and markets.
+												</p>
+							</section>
+					</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>Arturo Carrillo Villarreal</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
